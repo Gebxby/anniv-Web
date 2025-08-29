@@ -3,7 +3,7 @@
 import React, { useMemo, useState } from "react";
 import * as THREE from "three";
 // @ts-expect-error
-import NET from 'vanta/dist/vanta.net.min'; 
+import NET from 'vanta/dist/vanta.net.min';
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Unlock, Heart, Calendar, Play, Music, Star, X } from "lucide-react";
 
@@ -37,6 +37,13 @@ const MONTHS = [
   "November",
   "December",
 ];
+type Memory = {
+  date: string;
+  title: string;
+  desc: string;
+  pict: string;
+  icon: string;
+};
 
 // Fake audio sources for preview
 const demoAudios = Array.from({ length: 12 }, (_, i) => ({
@@ -168,8 +175,9 @@ export default function AnniversaryPreview() {
     });
   }, [startMonth, startYear]);
 
-  const [openIdx, setOpenIdx] = useState(null);
-  const [selectedMemory, setSelectedMemory] = useState(null);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
+  
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-rose-50 via-pink-50 to-white text-gray-800">
@@ -197,7 +205,7 @@ export default function AnniversaryPreview() {
           >
             Sebuah kapsul waktu kecil berisi kenangan, foto, dan 12 pesan suara—satu untuk setiap bulan ke depan.
           </motion.p>
-          <motion.div 
+          <motion.div
             className="mt-8 flex flex-wrap gap-4 justify-center"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -219,11 +227,11 @@ export default function AnniversaryPreview() {
           <Calendar className="h-6 w-6 text-rose-600" />
           <h2 className="text-2xl md:text-3xl font-semibold text-rose-800">Timeline Kita</h2>
         </div>
-        
+
         <div className="relative">
           {/* Garis timeline romantis */}
           <div className="absolute left-4 md:left-1/2 transform md:-translate-x-1/2 h-full w-1 bg-gradient-to-b from-rose-300 to-pink-200"></div>
-          
+
           {demoTimeline.map((item, idx) => (
             <motion.div
               key={idx}
@@ -238,9 +246,9 @@ export default function AnniversaryPreview() {
                 <div className="flex items-center justify-center w-10 h-10 rounded-full bg-rose-500 text-white z-10">
                   <span className="text-lg">{item.icon}</span>
                 </div>
-                
+
                 {/* Kartu memori */}
-                <motion.div 
+                <motion.div
                   whileHover={{ y: -5 }}
                   className="ml-4 md:ml-0 md:mx-4 rounded-2xl shadow-lg border-rose-100 bg-white/80 backdrop-blur-sm mt-4 md:mt-0 flex-1 cursor-pointer"
                   onClick={() => setSelectedMemory(item)}
@@ -248,21 +256,21 @@ export default function AnniversaryPreview() {
                   <Card className="h-full">
                     <CardContent className="p-5">
                       <div className="text-sm text-rose-600 font-medium">
-                        {new Date(item.date).toLocaleDateString('id-ID', { 
-                          year: 'numeric', 
-                          month: 'long', 
-                          day: 'numeric' 
+                        {new Date(item.date).toLocaleDateString('id-ID', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
                         })}
                       </div>
                       <div className="mt-1 text-lg font-semibold text-rose-900">{item.title}</div>
                       <p className="mt-2 text-rose-800/70">{item.desc}</p>
-                      
+
                       {/* Tampilkan thumbnail gambar jika ada */}
                       {item.pict && (
                         <div className="mt-4 overflow-hidden rounded-lg">
-                          <img 
-                            src={item.pict} 
-                            alt={item.title} 
+                          <img
+                            src={item.pict}
+                            alt={item.title}
                             className="w-full h-40 object-cover transition-transform duration-300 hover:scale-105"
                           />
                           <p className="text-xs text-rose-500 mt-2 text-center">Klik untuk melihat gambar lengkap</p>
@@ -284,7 +292,7 @@ export default function AnniversaryPreview() {
           <h2 className="text-2xl md:text-3xl font-semibold text-rose-800">Voice Message Jar</h2>
           <span className="text-sm bg-rose-100 text-rose-800 px-2 py-1 rounded-full">12x</span>
         </div>
-        
+
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
           {months.map((slot, idx) => {
             const locked = idx > currentUnlockIndex;
@@ -295,11 +303,10 @@ export default function AnniversaryPreview() {
                 whileTap={{ scale: locked ? 1 : 0.98 }}
                 disabled={locked}
                 onClick={() => setOpenIdx(idx)}
-                className={`group relative rounded-2xl border p-5 text-left transition-all duration-300 shadow-sm ${
-                  locked
+                className={`group relative rounded-2xl border p-5 text-left transition-all duration-300 shadow-sm ${locked
                     ? "border-rose-100 bg-white/60 text-rose-900/50"
                     : "border-rose-200 bg-white hover:bg-rose-50 text-rose-900 hover:shadow-md"
-                }`}
+                  }`}
               >
                 <div className="flex items-center justify-between mb-4">
                   <div className="text-sm font-medium">{slot.label}</div>
@@ -309,11 +316,10 @@ export default function AnniversaryPreview() {
                     <Unlock className="h-4 w-4 text-rose-600" />
                   )}
                 </div>
-                
+
                 <div className="flex items-center gap-3">
-                  <div className={`h-12 w-12 grid place-items-center rounded-full ${
-                    locked ? "bg-rose-100" : "bg-rose-200 group-hover:bg-rose-300 transition-colors"
-                  }`}>
+                  <div className={`h-12 w-12 grid place-items-center rounded-full ${locked ? "bg-rose-100" : "bg-rose-200 group-hover:bg-rose-300 transition-colors"
+                    }`}>
                     <Play className="h-5 w-5 fill-rose-700 text-rose-700" />
                   </div>
                   <div>
@@ -321,7 +327,7 @@ export default function AnniversaryPreview() {
                     <div className="text-xs mt-1 text-rose-900/60">{locked ? "Terkunci" : "Klik untuk memutar"}</div>
                   </div>
                 </div>
-                
+
                 {locked && (
                   <div className="absolute inset-0 rounded-2xl bg-white/50 backdrop-blur-[2px] flex items-center justify-center">
                     <Lock className="h-6 w-6 text-rose-300" />
@@ -375,19 +381,19 @@ export default function AnniversaryPreview() {
                 >
                   <X className="h-5 w-5 text-rose-700" />
                 </button> */}
-                <img 
-                  src={selectedMemory.pict} 
-                  alt={selectedMemory.title} 
+                <img
+                  src={selectedMemory.pict}
+                  alt={selectedMemory.title}
                   className="w-full h-80 object-cover"
                 />
               </div>
               <div className="p-6">
                 <DialogHeader>
                   <div className="text-sm text-rose-600 font-medium">
-                    {new Date(selectedMemory.date).toLocaleDateString('id-ID', { 
-                      year: 'numeric', 
-                      month: 'long', 
-                      day: 'numeric' 
+                    {new Date(selectedMemory.date).toLocaleDateString('id-ID', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
                     })}
                   </div>
                   <DialogTitle className="text-rose-900 text-left mt-1">
