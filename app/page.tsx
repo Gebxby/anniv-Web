@@ -1,7 +1,8 @@
 'use client'
 import React, { useMemo, useState } from "react";
 import * as THREE from "three";
-import NET from "vanta/dist/vanta.net.min"; 
+// @ts-ignore
+import NET from 'vanta/dist/vanta.net.min'; 
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Unlock, Heart, Calendar, Play, Music, Star, X } from "lucide-react";
 
