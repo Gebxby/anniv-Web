@@ -197,7 +197,17 @@ export default function AnniversaryPreview() {
           <source src="video/anniv.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video> */}
-        <video src="video/anniv.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover"></video>
+        {/* <video src="video/anniv.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover"></video> */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        >
+          <source src="/video/anniv.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
 
 
         {/* Overlay gelap biar teksnya kebaca */}
