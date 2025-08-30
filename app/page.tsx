@@ -5,6 +5,7 @@ import * as THREE from "three";
 // @ts-expect-error
 import NET from 'vanta/dist/vanta.net.min';
 import { motion, AnimatePresence } from "framer-motion";
+import Divider from "@/components/ui/Divider";
 import { Lock, Unlock, Heart, Calendar, Play, Music, Star, X } from "lucide-react";
 
 // --- Optional: shadcn/ui components (available in this environment)
@@ -19,6 +20,7 @@ import {
   DialogFooter,
   DialogClose,
 } from "@/components/ui/dialog";
+
 
 
 
@@ -114,51 +116,51 @@ const demoTimeline = [
     date: "2025-01-16",
     title: "CampEx di SMA Kamu",
     desc: "First time kita campex di SMA kamu, serasa kembali ke SMA dan beromantis ria",
-    pict: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    pict: "images/Campex.jpg",
     icon: "🏫"
   },
   {
     date: "2025-01-30",
     title: "First Time Karaokean",
     desc: "Ini first time dan yang paling deg-degan jujur HAHAHAHA",
-    pict: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    pict: "images/karoke.jpg",
     icon: "🎤"
   },
   {
     date: "2025-04-25",
     title: "Makan Ramen di Detos",
     desc: "Ini kelar nonton jumbo",
-    pict: "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    pict: "images/ramen.jpg",
     icon: "🍜"
   },
   {
     date: "2025-06-24",
     title: "Sushihiro di Margo",
     desc: "Favorit aku karna ngeliat kamu jadi cranky gituu lucuuuu",
-    pict: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    pict: "images/sushi.jpg",
     icon: "🍣"
   },
   {
     date: "2025-07-29",
     title: "Bang Yoyo Experience",
     desc: "One of the best experience, jujur seruuu!",
-    pict: "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    pict: "images/bangYoyo.jpg",
     icon: "🔥"
   },
   {
     date: "2025-01-14",
     title: "Our Song",
-    desc: "Lagu yang selalu diputar tiap jalan bareng.",
-    pict: "https://images.unsplash.com/photo-1571330735066-03aaa9429d89?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+    desc: "Lagu yang akrab sama kita setelah nonton Sore",
+    pict: "/images/song.jpg",
     icon: "🎵"
   },
-  {
-    date: "2025-05-30",
-    title: "Little Trip",
-    desc: "Short getaway yang bikin banyak foto lucu.",
-    pict: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
-    icon: "✈️"
-  },
+  // {
+  //   date: "2025-08",
+  //   title: "1 year Video",
+  //   desc: "Short getaway yang bikin banyak foto lucu.",
+  //   pict: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80",
+  //   icon: "✈️"
+  // },
 ];
 
 export default function AnniversaryPreview() {
@@ -177,23 +179,33 @@ export default function AnniversaryPreview() {
 
   const [openIdx, setOpenIdx] = useState<number | null>(null);
   const [selectedMemory, setSelectedMemory] = useState<Memory | null>(null);
-  
+
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-rose-50 via-pink-50 to-white text-gray-800">
-      {/* Hero / Landing */}
-      <section className="relative overflow-hidden">
-        <div className="absolute inset-0 -z-10 opacity-70 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]">
-          <div className="absolute -top-10 -left-10 h-72 w-72 rounded-full bg-rose-200 blur-3xl" />
-          <div className="absolute -bottom-10 -right-10 h-72 w-72 rounded-full bg-pink-200 blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 h-64 w-64 rounded-full bg-rose-300 blur-3xl opacity-50" />
-        </div>
-        <div className="max-w-5xl mx-auto px-6 py-16 text-center">
+
+      {/* Video Hero Section */}
+      <section className="relative w-full h-screen overflow-hidden mb-30">
+        {/* Background video */}
+        <video
+          src="video/anivv.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+
+        {/* Overlay gelap biar teksnya kebaca */}
+        <div className="absolute inset-0 bg-black/50" />
+
+        {/* Content di atas video */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-bold tracking-tight text-rose-700"
+            className="text-4xl md:text-6xl font-bold tracking-tight text-rose-300"
           >
             365 Hari Bersamamu
           </motion.h1>
@@ -201,31 +213,24 @@ export default function AnniversaryPreview() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-lg md:text-xl text-rose-900/70"
+            className="mt-4 text-lg md:text-xl text-rose-100"
           >
             Sebuah kapsul waktu kecil berisi kenangan, foto, dan 12 pesan suara—satu untuk setiap bulan ke depan.
           </motion.p>
-          <motion.div
-            className="mt-8 flex flex-wrap gap-4 justify-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            <Button className="rounded-2xl px-6 py-6 text-base bg-rose-600 hover:bg-rose-700">
+        </div>
+      </section>
+      {/* <Button className="rounded-2xl px-6 py-6 text-base bg-rose-600 hover:bg-rose-700">
               Lihat Timeline
             </Button>
             <Button variant="outline" className="rounded-2xl px-6 py-6 text-base border-rose-300 text-rose-700 hover:bg-rose-50">
               Buka Voice Messages
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
+            </Button> */}
       {/* Timeline */}
+      {/* <Divider/> */}
       <section className="max-w-5xl mx-auto px-6 py-10">
         <div className="flex items-center justify-center gap-2 mb-10">
           <Calendar className="h-6 w-6 text-rose-600" />
-          <h2 className="text-2xl md:text-3xl font-semibold text-rose-800">Timeline Kita</h2>
+          <h2 className="text-5xl md:text-6xl font-semibold text-rose-800">Timeline Kita</h2>
         </div>
 
         <div className="relative">
@@ -289,7 +294,7 @@ export default function AnniversaryPreview() {
       <section className="max-w-5xl mx-auto px-6 pb-20">
         <div className="flex items-center justify-center gap-2 mb-10">
           <Music className="h-6 w-6 text-rose-600" />
-          <h2 className="text-2xl md:text-3xl font-semibold text-rose-800">Voice Message Jar</h2>
+          <h2 className="text-4xl md:text-6xl font-semibold text-rose-800">Voice Message Jar</h2>
           <span className="text-sm bg-rose-100 text-rose-800 px-2 py-1 rounded-full">12x</span>
         </div>
 
@@ -304,8 +309,8 @@ export default function AnniversaryPreview() {
                 disabled={locked}
                 onClick={() => setOpenIdx(idx)}
                 className={`group relative rounded-2xl border p-5 text-left transition-all duration-300 shadow-sm ${locked
-                    ? "border-rose-100 bg-white/60 text-rose-900/50"
-                    : "border-rose-200 bg-white hover:bg-rose-50 text-rose-900 hover:shadow-md"
+                  ? "border-rose-100 bg-white/60 text-rose-900/50"
+                  : "border-rose-200 bg-white hover:bg-rose-50 text-rose-900 hover:shadow-md"
                   }`}
               >
                 <div className="flex items-center justify-between mb-4">
@@ -410,7 +415,7 @@ export default function AnniversaryPreview() {
       </AnimatePresence>
 
       <footer className="pb-10 text-center text-xs text-rose-900/50">
-        Dibuat dengan ❤ oleh Gabby — Preview
+        Credit - Gabby your Bubble 💗
       </footer>
     </div>
   );
