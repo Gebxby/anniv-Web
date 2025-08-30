@@ -189,6 +189,7 @@ export default function AnniversaryPreview() {
         {/* Background video */}
         <video
           src="video/anniv.mp4"
+          typeof="video/mp4"
           autoPlay
           loop
           muted
