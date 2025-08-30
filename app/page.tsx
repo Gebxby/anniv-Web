@@ -187,7 +187,7 @@ export default function AnniversaryPreview() {
       {/* Video Hero Section */}
       <section className="relative w-full h-screen overflow-hidden mb-30">
         {/* Background video */}
-        <video
+        {/* <video
           autoPlay
           loop
           muted
@@ -195,8 +195,9 @@ export default function AnniversaryPreview() {
           className="absolute inset-0 w-full h-full object-cover"
         >
           <source src="video/anniv.mp4" type="video/mp4" />
-          
-        </video>
+          Your browser does not support the video tag.
+        </video> */}
+        <video src="video/anniv.mp4" autoPlay loop muted playsInline className="absolute inset-0 w-full h-full object-cover"></video>
 
 
         {/* Overlay gelap biar teksnya kebaca */}
