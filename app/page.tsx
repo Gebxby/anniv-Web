@@ -123,14 +123,14 @@ const demoTimeline = [
     date: "2025-01-30",
     title: "First Time Karaokean",
     desc: "Ini first time dan yang paling deg-degan jujur HAHAHAHA",
-    pict: "images/karoke.jpg",
+    pict: "images/Karoke.jpg",
     icon: "🎤"
   },
   {
     date: "2025-04-25",
     title: "Makan Ramen di Detos",
     desc: "Ini kelar nonton jumbo",
-    pict: "images/ramen.jpg",
+    pict: "images/Ramen.jpg",
     icon: "🍜"
   },
   {
@@ -188,7 +188,7 @@ export default function AnniversaryPreview() {
       <section className="relative w-full h-screen overflow-hidden mb-30">
         {/* Background video */}
         <video
-          src="video/anivv.mp4"
+          src="video/anniv.mp4"
           autoPlay
           loop
           muted
