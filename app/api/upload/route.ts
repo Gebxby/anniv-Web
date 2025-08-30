@@ -2,7 +2,7 @@ import { put } from '@vercel/blob';
  
 export async function POST(request: Request) {
   const { searchParams } = new URL(request.url);
-  const filename = searchParams.get('video/anniv.mp4');
+  const filename = searchParams.get('anniv.mp4');
   if (!filename) {
     return new Response('Missing "anniv.mp4" query parameter', { status: 400 });
   }
