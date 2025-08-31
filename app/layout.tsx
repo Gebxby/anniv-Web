@@ -5,12 +5,15 @@ import "./globals.css";
 const greatVibes = Great_Vibes({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-great-vibes",
+  variable: "--font-roman",
 });
 
 export const metadata: Metadata = {
   title: "Anniversary Celebration",
   description: "1 year of love and memories",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
