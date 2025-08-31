@@ -205,13 +205,13 @@ export default function AnniversaryPreview() {
           playsInline
           className=""
         >
-          <source src="/video/anniv.mp4" type="video/mp4" />
+          <source src="/video/anj.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
 
 
         {/* Overlay gelap biar teksnya kebaca */}
-        <div className="absolute inset-0 bg-black/50" />
+        {/* <div className="absolute inset-0 bg-black/50" /> */}
 
         {/* Content di atas video */}
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
