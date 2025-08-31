@@ -203,7 +203,7 @@ export default function AnniversaryPreview() {
           loop
           muted
           playsInline
-          className="absolute inset-0 w-full h-full object-cover"
+          className="inset-0 w-full h-full object-cover"
         >
           <source src="/video/anniv.mp4" type="video/mp4" />
           Your browser does not support the video tag.
