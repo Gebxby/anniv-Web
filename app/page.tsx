@@ -80,7 +80,7 @@ const demoTimeline = [
   {
     date: "2024-09-26",
     title: "Malam Spesial di Ayam Geprek",
-    desc: "Kamu nyamperin aku malem-malam sehabis nonton bioskop sama teman kampus",
+    desc: "ultah kamuu kita rayain di ayam geprek kukel, inget banget waktu itu kita makan cepet cepet",
     pict: "/images/ayam-geprek.jpg",
     icon: "🌙"
   },
