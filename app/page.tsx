@@ -87,7 +87,7 @@ const demoTimeline = [
   {
     date: "2024-10-18",
     title: "First Photobooth",
-    desc: "Kelar parade, makan di pacil lama, trus nyebrang ke FIB",
+    desc: "makan di pacil lama, trus nyebrang ke FIB(tidak direncanakan)",
     pict: "/images/first-Photobooth.jpeg",
     icon: "📸"
   },
